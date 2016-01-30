@@ -11,9 +11,9 @@ public:
     void transformarShinkai();
     void transformarBankai();
 private:
+    string nomedaZampakutou;
     bool modoBankai;
     bool modoShinkai;
     bool empunhada;
-    string nomedaZampakutou;
 };
 
