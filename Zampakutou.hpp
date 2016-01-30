@@ -5,12 +5,15 @@ class Zampakutou
 {
 public:
     Zampakutou();
+    Zampakutou(const string &, bool);
     ~Zampakutou();
-    bool transformarShinkai();
-    bool transformarBankai();
+    void empunharZampakutou();
+    void transformarShinkai();
+    void transformarBankai();
 private:
     bool modoBankai;
     bool modoShinkai;
+    bool empunhada;
     string nomedaZampakutou;
 };
 
