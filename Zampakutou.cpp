@@ -6,23 +6,24 @@ using std::cin;
 
 Zampakutou::Zampakutou()
 {
-    empunhada = false;
-    modoShinkai = false;
-    modoBankai = false;
+    this->empunhada = false;
+    this->modoShinkai = false;
+    this->modoBankai = false;
 }
 Zampakutou::Zampakutou(const string &nome, bool empu)
 {
-    nomedaZampakutou = nome;
-    empunhada = empu;
-    if (nomedaZampakutou == "zangetsu")
+    this->nomedaZampakutou = nome;
+    this->empunhada = empu;
+    
+    if (this->nomedaZampakutou == "zangetsu")
     {
-            modoShinkai = true;
-            modoBankai = false;
+            this->modoShinkai = true;
+            this->modoBankai = false;
     }
     else
     {
-        modoShinkai = false;
-        modoBankai = false;
+        this->modoShinkai = false;
+        this->modoBankai = false;
     }
 }
 
@@ -31,40 +32,40 @@ Zampakutou::~Zampakutou()
 }
 void Zampakutou::empunharZampakutou()
 {
-    if(empunhada == true)
-        cout<<"A sua Zampakutou já está empunhada!";
+    if(this->empunhada == true)
+        cout<<"A sua Zampakutou ja esta empunhada!";
     else
     {
-        empunhada = true;
-        cout<<"A sua Zampakutou está empunhada prepara-se para lutar!";
+        this->empunhada = true;
+        cout<<"A sua Zampakutou esta empunhada prepara-se para lutar!";
     }
 }
 void Zampakutou::transformarShinkai()
 {
-    if (empunhada == true)
+    if (this->empunhada == true)
     {
-        if (empunhada == true && modoShinkai == false && modoBankai == false)
+        if (this->empunhada == true && this->modoShinkai == false && this->modoBankai == false)
         {
-            modoShinkai = true;
-            cout<<"O modo Shinkai da "<<nomedaZampakutou<<" está ativa!";
+            this->modoShinkai = true;
+            cout<<"O modo Shinkai da "<<this->nomedaZampakutou<<" esta ativa!";
         }
         else
-            cout<<"O modo Shikai ou Bankai já está ativo.";
+            cout<<"O modo Shikai ou Bankai ja esta ativo.";
     }
     else
         cout<<"Antes de invocar sua Shinkai, empenhe-a!";
 }
 void Zampakutou::transformarBankai()
 {
-    if (empunhada == true)
+    if (this->empunhada == true)
     {
-        if (modoShinkai == false && modoBankai == false)
+        if (this->modoShinkai == false && this->modoBankai == false)
         {
-            modoBankai = true;
-            cout<<"O modo Bankai da "<<nomedaZampakutou<<" está ativa!";
+            this->modoBankai = true;
+            cout<<"O modo Bankai da "<<this->nomedaZampakutou<<" esta ativa!";
         }
         else        
-            cout<<"O modo Shikai ou Bankai já está ativo.";
+            cout<<"O modo Shikai ou Bankai ja esta ativo.";
     }
     else
         cout<<"Antes de invocar sua Bankai, empunhe-a!";

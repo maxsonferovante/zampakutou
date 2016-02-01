@@ -1,5 +1,5 @@
-#include<iostrem>
-#include "Zampakutou/Zampakutou.hpp"
+#include<iostream>
+#include "Zampakutou.hpp"
 
 using std::string;
 using std::cout;
@@ -7,7 +7,9 @@ using std::cin;
 
 int main(){
     
-    Guerreiro g Guerreiro("zangetsu", true); // Zampakutou(const string &nome, bool empu)
+    Zampakutou espada; // Zampakutou(const string &nome, bool empu)
     
-    g.modoShikai();
+    espada.transformarShinkai();
+    espada.empunharZampakutou();
+    
     return 0;}
