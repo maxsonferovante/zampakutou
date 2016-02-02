@@ -7,14 +7,13 @@ using std::cin;
 
 int main(){
     
-    Zanpakuto espada; // Zampakutou(const string &nome, bool empu)
-    
+    Zanpakuto espada; // Zanpakuto(const string &nome, bool empu)
+    int resistencia = 7;
     espada.empunharZanpakuto();
+    espada.transformarBankai();
     
+    cout<<"\nResistencia do Hollow antes do ataque direto era "<<resistencia<<", agora "<<espada.atacaDiretoZanpakuto(resistencia);
     
-    
-    
-    
-    
-    
-    return 0;}
+    cout<<std::endl;
+    return 0;
+    }

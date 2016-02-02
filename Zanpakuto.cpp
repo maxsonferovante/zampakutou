@@ -11,19 +11,17 @@ using std::cout;
 using std::string;
 
 Zanpakuto::Zanpakuto()
+:damoDireto(10), damoRajada(15), resistenciadaZanpakuto(8)
 {
     this->empunhada = false;
     this->modoShinkai = false;
     this->modoBankai = false;
+    this->nomedaZanpakuto ="Zanpakuto";
 }
 Zanpakuto::Zanpakuto(const string &nome, bool empu)
+:empunhada(empu), damoDireto(10), damoRajada(15), resistenciadaZanpakuto(8)
 {
     this->nomedaZanpakuto = nome;
-    this->empunhada = empu;
-    this->damoDireto = 10;
-    this->damoRajada = 15;
-    this->resistenciadaZanpakuto =8;
-   
     if (this->nomedaZanpakuto == "zangetsu")
     {
             this->modoShinkai = true;
@@ -41,38 +39,59 @@ Zanpakuto::~Zanpakuto()
 }
 void Zanpakuto::empunharZanpakuto()
 {
-    this->empunhada = true;
-    cout<<"A sua Zanpakuto esta empunhada prepara-se para lutar!"; 
+    if (not this->empunhada || this->nomedaZanpakuto.compare("zangetsu") == 0)
+    {
+        this->empunhada = true;
+        cout<<"\nA sua Zanpakuto esta empunhada prepara-se para lutar!"; 
+    }
+    else
+    {
+        this->empunhada = false;
+        cout<<"\nA sua Zanpakuto esta desempunhada!";         
+    }
 }
 void Zanpakuto::transformarShinkai()
 {
     if (this->empunhada)
     {
-        if (this->modoShinkai)
+        if (not this->modoShinkai)
         {
             this->modoShinkai = true;
-            cout<<"O modo Shinkai da "<<this->nomedaZanpakuto<<" esta ativa!";
+            this->damoDireto+=2;
+            this->damoRajada+=4;
+            cout<<"\nO modo Shinkai da "<<this->nomedaZanpakuto<<" esta ativa!";
         }
         else
-            cout<<"O modo Shikaija esta ativo.";
+        {
+            this->modoShinkai = false;
+            this->damoDireto-=2;
+            this->damoRajada-=4;
+            cout<<"\nO modo Shikaija da "<<this->nomedaZanpakuto<<" esta desativo.";
+        }
     }
     else
-        cout<<"Antes de invocar sua Shinkai, empenhe-a!";
+        cout<<"\nAntes de invocar sua Shinkai, empenhe-a!";
 }
 void Zanpakuto::transformarBankai()
 {
     if (this->empunhada)
     {
-        if (this->modoShinkai)
+        if (not this->modoBankai)
         {
             this->modoBankai = true;
-            cout<<"O modo Bankai da "<<this->nomedaZanpakuto<<" esta ativa!";
+            this->damoDireto+=4;
+            this->damoRajada+=8;
+            cout<<"\nO modo Bankai da "<<this->nomedaZanpakuto<<" esta ativa!";
         }
-        else        
-            cout<<"O modo Bankai ja esta ativo.";
+        else{
+            this->modoBankai = false;
+            this->damoDireto-=4;
+            this->damoRajada-=8;
+            cout<<"\nO modo Bankai da "<<this->nomedaZanpakuto<<" esta ativo.";
+        }
     }
     else
-        cout<<"Antes de invocar sua Bankai, empunhe-a!";
+        cout<<"\nAntes de invocar sua Bankai, empunhe-a!";
 }
 bool Zanpakuto::konsodaZanpakuto(const string &fantasma)
 {
@@ -98,23 +117,54 @@ bool Zanpakuto::konsodaZanpakuto(const string &fantasma)
         return false;
     }
 }
-void Zanpakuto::atacaDiretoZanpakuto(int *resistenciadoHollow)
+int Zanpakuto::atacaDiretoZanpakuto(int resistenciadoHollow)
 {
-    if (this->damoDireto == *resistenciadoHollow)
+    if (this->damoDireto == resistenciadoHollow)
+    {
        this->resistenciadaZanpakuto -=2;
+       //niveldeResistenciaZanpakuto();
+    }
     else
-        if (this->damoDireto < *resistenciadoHollow)
+        if (this->damoDireto < resistenciadoHollow)
+        {
             this->resistenciadaZanpakuto -=3;
+         //   niveldeResistenciaZanpakuto();
+        }
         else
-            *resistenciadoHollow -=(this->damoDireto/2);
+            resistenciadoHollow -=(this->damoDireto/2);
+    
+    return resistenciadoHollow;
 }
-void Zanpakuto::rajadadeReiatsuZanpakuto(int *resistenciadoHollow)
+int Zanpakuto::rajadadeReiatsuZanpakuto(int resistenciadoHollow)
 {
-        if(this->damoRajada == *resistenciadoHollow)
+        if(this->damoRajada == resistenciadoHollow)
+        {
             this->resistenciadaZanpakuto -=1;
+            //niveldeResistenciaZanpakuto();
+        }
         else
-            if (this->damoRajada < *resistenciadoHollow)
-                this->resistenciadaZanpakuto-2;
+            if (this->damoRajada < resistenciadoHollow)
+            {
+                this->resistenciadaZanpakuto-=2;
+              //  niveldeResistenciaZanpakuto();
+            }
             else
-                *resistenciadoHollow -=(this->damoRajada);
+                resistenciadoHollow -=(this->damoRajada);
+        return  resistenciadoHollow;
+}
+void Zanpakuto::niveldeResistenciaZanpakuto()
+{
+    if(this->resistenciadaZanpakuto<4)
+    {
+        if (this->modoShinkai)
+            transformarShinkai();
+        else
+            if(this->modoBankai)
+                transformarBankai();
+            else
+            {
+                empunharZanpakuto();
+                cout<<"\nO nivel de Reiatusu no Ambiente esta baixo";
+            }              
+    }
 }

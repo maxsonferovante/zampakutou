@@ -14,8 +14,8 @@ class Zanpakuto
         void transformarBankai();
         
         bool konsodaZanpakuto(const string &);
-        void atacaDiretoZanpakuto(int *);
-        void rajadadeReiatsuZanpakuto(int *);
+        int atacaDiretoZanpakuto(int);
+        int rajadadeReiatsuZanpakuto(int);
         
     private:
         string nomedaZanpakuto;
@@ -25,5 +25,6 @@ class Zanpakuto
         int damoDireto;
         int damoRajada;
         int resistenciadaZanpakuto;
+        void niveldeResistenciaZanpakuto();
 };
 
