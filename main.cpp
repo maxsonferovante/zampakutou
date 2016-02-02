@@ -9,7 +9,12 @@ int main(){
     
     Zanpakuto espada; // Zampakutou(const string &nome, bool empu)
     
-    espada.transformarShinkai();
-    espada.empunharZampakutou();
+    espada.empunharZanpakuto();
+    
+    
+    
+    
+    
+    
     
     return 0;}

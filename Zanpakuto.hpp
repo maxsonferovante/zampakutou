@@ -3,6 +3,7 @@ using std::string;
 
 class Zanpakuto
 {
+    
     public:
         Zanpakuto();
         Zanpakuto(const string &, bool);
@@ -12,17 +13,17 @@ class Zanpakuto
         void transformarShinkai();
         void transformarBankai();
         
-        void konsodaZanpakuto();
-        void sublimacaoZanpakuto(); 
-        void transferenciaZanpakuto(const string &, const string &);
+        bool konsodaZanpakuto(const string &);
+        void atacaDiretoZanpakuto(int *);
+        void rajadadeReiatsuZanpakuto(int *);
         
     private:
         string nomedaZanpakuto;
-        string nomedaFormaSelada;
-        string comandodeLiberacao;
-        string nomeLiberacaoFinal;
         bool modoBankai;
         bool modoShinkai;
         bool empunhada;
+        int damoDireto;
+        int damoRajada;
+        int resistenciadaZanpakuto;
 };
 
