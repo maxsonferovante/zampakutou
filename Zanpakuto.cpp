@@ -46,30 +46,30 @@ void Zanpakuto::empunharZanpakuto()
 }
 void Zanpakuto::transformarShinkai()
 {
-    if (this->empunhada == true)
+    if (this->empunhada)
     {
-        if (this->empunhada == true && this->modoShinkai == false && this->modoBankai == false)
+        if (this->modoShinkai)
         {
             this->modoShinkai = true;
             cout<<"O modo Shinkai da "<<this->nomedaZanpakuto<<" esta ativa!";
         }
         else
-            cout<<"O modo Shikai ou Bankai ja esta ativo.";
+            cout<<"O modo Shikaija esta ativo.";
     }
     else
         cout<<"Antes de invocar sua Shinkai, empenhe-a!";
 }
 void Zanpakuto::transformarBankai()
 {
-    if (this->empunhada == true)
+    if (this->empunhada)
     {
-        if (this->modoShinkai == false && this->modoBankai == false)
+        if (this->modoShinkai)
         {
             this->modoBankai = true;
             cout<<"O modo Bankai da "<<this->nomedaZanpakuto<<" esta ativa!";
         }
         else        
-            cout<<"O modo Shikai ou Bankai ja esta ativo.";
+            cout<<"O modo Bankai ja esta ativo.";
     }
     else
         cout<<"Antes de invocar sua Bankai, empunhe-a!";
