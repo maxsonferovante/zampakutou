@@ -87,7 +87,7 @@ void Zanpakuto::transformarBankai()
             this->modoBankai = false;
             this->damoDireto-=4;
             this->damoRajada-=8;
-            cout<<"\nO modo Bankai da "<<this->nomedaZanpakuto<<" esta ativo.";
+            cout<<"\nO modo Bankai da "<<this->nomedaZanpakuto<<" esta desativo.";
         }
     }
     else
@@ -120,36 +120,26 @@ bool Zanpakuto::konsodaZanpakuto(const string &fantasma)
 int Zanpakuto::atacaDiretoZanpakuto(int resistenciadoHollow)
 {
     if (this->damoDireto == resistenciadoHollow)
-    {
        this->resistenciadaZanpakuto -=2;
-       //niveldeResistenciaZanpakuto();
-    }
-    else
-        if (this->damoDireto < resistenciadoHollow)
-        {
-            this->resistenciadaZanpakuto -=3;
-         //   niveldeResistenciaZanpakuto();
-        }
-        else
-            resistenciadoHollow -=(this->damoDireto/2);
-    
+    else{
+            if (this->damoDireto < resistenciadoHollow)
+	            	this->resistenciadaZanpakuto -=3;
+        	else
+            		resistenciadoHollow -=(this->damoDireto/2);
+    	}
     return resistenciadoHollow;
 }
 int Zanpakuto::rajadadeReiatsuZanpakuto(int resistenciadoHollow)
 {
         if(this->damoRajada == resistenciadoHollow)
-        {
             this->resistenciadaZanpakuto -=1;
-            //niveldeResistenciaZanpakuto();
-        }
-        else
+       else{
             if (this->damoRajada < resistenciadoHollow)
-            {
                 this->resistenciadaZanpakuto-=2;
-              //  niveldeResistenciaZanpakuto();
-            }
             else
                 resistenciadoHollow -=(this->damoRajada);
+                
+            }
         return  resistenciadoHollow;
 }
 void Zanpakuto::niveldeResistenciaZanpakuto()
