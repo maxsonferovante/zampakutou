@@ -25,6 +25,7 @@ class Zanpakuto
         int damoDireto;
         int damoRajada;
         int resistenciadaZanpakuto;
+
         void niveldeResistenciaZanpakuto();
 };
 
